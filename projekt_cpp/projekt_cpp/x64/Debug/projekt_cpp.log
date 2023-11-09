@@ -1,0 +1,3 @@
+﻿  main.cpp
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\projekt_cpp\projekt_cpp\main.cpp(7,23): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+  projekt_cpp.vcxproj -> C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\projekt_cpp\x64\Debug\projekt_cpp.exe
