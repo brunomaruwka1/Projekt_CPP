@@ -1,0 +1,60 @@
+﻿  MainMenu.cpp
+  sfml.cpp
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(114,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(114,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(120,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(120,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(126,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(126,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(139,56): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(139,42): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(195,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(197,55): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(197,37): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(232,85): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(232,62): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(264,51): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(333,77): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(333,69): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(341,51): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(355,69): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(386,88): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(386,75): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(391,94): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(391,76): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(394,82): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(394,67): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(404,51): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(429,59): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(529,81): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(529,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(534,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(534,65): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(540,105): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\sfml_games\sfml.cpp(540,87): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+  sfml_games.vcxproj -> C:\Users\bruno\OneDrive\Pulpit\ThirdSemester\CPP\sfml_games\x64\Debug\sfml_games.exe
