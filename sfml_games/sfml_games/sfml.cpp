@@ -8,7 +8,7 @@ int plansza[12][12]; // Plansza z ukrytymi minami i liczbami
 int z_plansza[12][12]; // Plansza do klikania
 
 const int M_pacxon = 35;
-const int N_pacxon = 56;
+const int N_pacxon = 40;
 int liczba_pol = 0;
 
 int grid[M_pacxon][N_pacxon] = { 0 }; // Plansza gry
@@ -220,34 +220,33 @@ void main() {
                     break;
                 }
                 if (event.key.code == Keyboard::Return) {
-                    RenderWindow GAME_MENU(VideoMode(960, 720), "MENU GAME");
-                    RenderWindow OPTIONS(VideoMode(960, 720), "OPTIONS");
-                    RenderWindow ABOUT(VideoMode(960, 720), "ABOUT");
+                    //RenderWindow GAME_MENU(VideoMode(960, 720), "MENU GAME");
+                    //RenderWindow OPTIONS(VideoMode(960, 720), "OPTIONS");
+                    //RenderWindow ABOUT(VideoMode(960, 720), "ABOUT");
                     //RenderWindow Play(VideoMode(960, 720), "game_name");
 
                     int x = mainMenu.MainMenuPressed();
                     if (x == 0)
                     {   
-                        MENU.close();
-                        MainMenu gameMenu(GAME_MENU.getSize().x, GAME_MENU.getSize().y, 1);
+                        bool Play = true;
+                        MainMenu gameMenu(MENU.getSize().x, MENU.getSize().y, 1);
 
-                        while (GAME_MENU.isOpen())
+                        while (Play)
                         {
 
                             Event aevent;
-                            while (GAME_MENU.pollEvent(aevent)) {
+                            while (MENU.pollEvent(aevent)) {
                                 if (aevent.type == Event::Closed) {
-                                    GAME_MENU.close();
+                                    Play = false;
                                 }
-                                if (aevent.type == Event::KeyPressed)
-                                {
+                                
+                                if (aevent.type == Event::KeyReleased)
+                                {   
                                     if (aevent.key.code == Keyboard::Escape)
                                     {
-                                        GAME_MENU.close();
+                                        Play = false;
+                                        break;
                                     }
-                                }
-                                if (aevent.type == Event::KeyReleased)
-                                {
                                     if (aevent.key.code == Keyboard::Up)
                                     {
                                         gameMenu.MoveUp();
@@ -258,14 +257,22 @@ void main() {
                                         gameMenu.MoveDown();
                                         break;
                                     }
+                                    if (aevent.key.code == Keyboard::Escape)
+                                    {
+                                        MENU.clear();
+                                        mainMenu.draw(MENU);
+                                        MENU.display();
+                                        cout << 1 << endl;
+
+                                        break;
+                                    }
 
                                     int y = gameMenu.MainMenuPressed();
                                     if (y == 0) {
                                         srand(time(0));
 
                                         // Inicjalizacja okna gry
-                                        RenderWindow app(VideoMode(600, 600), "Saper");
-
+                                        //RenderWindow app(VideoMode(600, 600), "Saper");
                            
 
                                         Texture t;
@@ -300,17 +307,19 @@ void main() {
                                                 plansza[i][j] = n;
                                             }
 
-                                        while (app.isOpen())
+                                        bool saper = true;
+
+                                        while (saper)
                                         {
-                                            Vector2i pos = Mouse::getPosition(app);
+                                            Vector2i pos = Mouse::getPosition(MENU);
                                             int x = pos.x / sz;
                                             int y = pos.y / sz;
 
                                             Event e;
-                                            while (app.pollEvent(e))
+                                            while (MENU.pollEvent(e))
                                             {
                                                 if (e.type == Event::Closed)
-                                                    app.close();
+                                                    saper = false;
 
                                                 if (e.type == Event::MouseButtonPressed)
                                                 {
@@ -321,7 +330,7 @@ void main() {
                                                 }
                                             }
 
-                                            app.clear(Color::White);
+                                            MENU.clear(Color::White);
 
                                             // Wyświetlanie planszy
                                             for (int i = 1; i <= 10; i++)
@@ -331,16 +340,16 @@ void main() {
                                                         z_plansza[i][j] = plansza[i][j];
                                                     s.setTextureRect(IntRect(z_plansza[i][j] * sz, 0, sz, sz));
                                                     s.setPosition(i * sz, j * sz);
-                                                    app.draw(s);
+                                                    MENU.draw(s);
                                                 }
 
-                                            app.display();
+                                            MENU.display();
                                         }
                                     }
                                     if (y == 1) {
                                         srand(time(0));
 
-                                        RenderWindow window(VideoMode(sz_snake, w_snake), "Snake"); // Inicjalizacja okna gry
+                                        //RenderWindow window(VideoMode(sz_snake, w_snake), "Snake"); // Inicjalizacja okna gry
 
                                         Texture t1, t2, t3; // Tekstury dla kafelka planszy i węża
                                         t1.loadFromFile("snake/grey.png");
@@ -357,17 +366,19 @@ void main() {
                                         f.x = 10;
                                         f.y = 10;
 
-                                        while (window.isOpen())
+                                        bool snake = true;
+
+                                        while (snake)
                                         {
                                             float time = clock.getElapsedTime().asSeconds(); // Pobranie czasu od ostatniego ticka
                                             clock.restart(); // Zresetowanie zegara
                                             timer += time;
 
                                             Event e;
-                                            while (window.pollEvent(e))
+                                            while (MENU.pollEvent(e))
                                             {
                                                 if (e.type == Event::Closed)
-                                                    window.close();
+                                                    snake = false;
                                             }
 
                                             if (Keyboard::isKeyPressed(Keyboard::Left)) dir = 1; // Ustawienie kierunku ruchu węża na lewo
@@ -378,33 +389,33 @@ void main() {
                                             if (timer > delay) { timer = 0; Tick(); } // Wywołanie funkcji Tick z określoną częstotliwością
 
                                             ////// draw  ///////
-                                            window.clear(); // Wyczyszczenie okna
+                                            MENU.clear(); // Wyczyszczenie okna
 
                                             for (int i = 0; i < N_snake; i++)
                                                 for (int j = 0; j < M_snake; j++)
                                                 {
-                                                    sprite1.setPosition(i * rozmiar, j * rozmiar);  window.draw(sprite1); // Rysowanie kafelków planszy
+                                                    sprite1.setPosition(i * rozmiar, j * rozmiar);  MENU.draw(sprite1); // Rysowanie kafelków planszy
                                                 }
 
                                             for (int i = 0; i < num; i++)
                                             {
-                                                sprite2.setPosition(s[i].x * rozmiar, s[i].y * rozmiar);  window.draw(sprite2); // Rysowanie segmentów węża
+                                                sprite2.setPosition(s[i].x * rozmiar, s[i].y * rozmiar);  MENU.draw(sprite2); // Rysowanie segmentów węża
                                             }
 
-                                            fruit.setPosition(f.x * rozmiar, f.y * rozmiar);  window.draw(fruit); // Rysowanie owocu
+                                            fruit.setPosition(f.x * rozmiar, f.y * rozmiar);  MENU.draw(fruit); // Rysowanie owocu
 
-                                            window.display(); // Wyświetlenie zawartości okna
+                                            MENU.display(); // Wyświetlenie zawartości okna
                                         }
 
-                                 
-                                        
                                     }
                                     if (y == 2) {
                                         
                                         srand(time(0));
 
-                                        RenderWindow window(VideoMode(N_pacxon* ts, M_pacxon* ts), "Pac-xon");
-                                        window.setFramerateLimit(60);
+                                        //RenderWindow window(VideoMode(N_pacxon* ts, M_pacxon* ts), "Pac-xon");
+                                        //window.setFramerateLimit(60);
+
+                                        MENU.setFramerateLimit(60);
 
                                         Texture t1, t2, t3, t4;
                                         t1.loadFromFile("pacxon/tiles.png");
@@ -435,17 +446,19 @@ void main() {
                                                 if (i == 0 || j == 0 || i == M_pacxon - 1 || j == N_pacxon - 1)
                                                     grid[i][j] = 1;
 
-                                        while (window.isOpen())
+                                        bool pac_xon = true;
+
+                                        while (pac_xon)
                                         {
                                             float time = zegar.getElapsedTime().asSeconds();
                                             zegar.restart();
                                             timer += time;
 
                                             Event e;
-                                            while (window.pollEvent(e))
+                                            while (MENU.pollEvent(e))
                                             {
                                                 if (e.type == Event::Closed)
-                                                    window.close();
+                                                    pac_xon = false;
 
                                                 // Obsługa klawisza Escape - restart gry
                                                 if (e.type == Event::KeyPressed)
@@ -518,7 +531,7 @@ void main() {
                                                 if (grid[przeciwnicy[i].y / ts][przeciwnicy[i].x / ts] == 2) Gra = false;
 
                                             ///////// Rysowanie ////////
-                                            window.clear();
+                                            MENU.clear();
 
                                             for (int i = 0; i < M_pacxon; i++)
                                                 for (int j = 0; j < N_pacxon; j++)
@@ -527,38 +540,38 @@ void main() {
                                                     if (grid[i][j] == 1) sTile.setTextureRect(IntRect(0, 0, ts, ts));
                                                     if (grid[i][j] == 2) sTile.setTextureRect(IntRect(54, 0, ts, ts));
                                                     sTile.setPosition(j * ts, i * ts);
-                                                    window.draw(sTile);
+                                                    MENU.draw(sTile);
                                                 }
 
                                             sTile.setTextureRect(IntRect(36, 0, ts, ts));
                                             sTile.setPosition(x * ts, y * ts);
-                                            window.draw(sTile);
+                                            MENU.draw(sTile);
 
                                             sPrzeciwnik.rotate(10);
                                             for (int i = 0; i < liczba_przeciwnikow; i++)
                                             {
                                                 sPrzeciwnik.setPosition(przeciwnicy[i].x, przeciwnicy[i].y);
-                                                window.draw(sPrzeciwnik);
+                                                MENU.draw(sPrzeciwnik);
                                             }
 
                                             // Wyświetlenie napisu "Game Over" w przypadku przegranej
-                                            if (!Gra) window.draw(sGameover);
+                                            if (!Gra) MENU.draw(sGameover);
 
                                             // Wyświetlenie napisu "You Win" w przypadku zwycięstwa
-                                            if (liczba_pol >= 600) {
+                                            if (liczba_pol >= M_pacxon*N_pacxon*0.8) {
                                                 Gra = false;
-                                                window.draw(sYouwin);
+                                                MENU.draw(sYouwin);
                                             }
 
                                             std::cout << liczba_pol << std::endl;
 
                                             liczba_pol = 0;
 
-                                            window.display();
+                                            MENU.display();
                                         }
                                     }
                                     if (y == 3) {
-                                        sf::RenderWindow window(sf::VideoMode(WindowSize, WindowSize), "Samotnik");
+                                        //sf::RenderWindow window(sf::VideoMode(WindowSize, WindowSize), "Samotnik");
 
                                         std::vector<std::vector<int>> board = {
                                             {0, 0, 1, 1, 1, 0, 0},
@@ -570,26 +583,28 @@ void main() {
                                             {0, 0, 1, 1, 1, 0, 0}
                                         };
 
-                                        while (window.isOpen()) {
+                                        bool samotnik = true;
+
+                                        while (samotnik) {
                                             sf::Event event;
-                                            while (window.pollEvent(event)) {
+                                            while (MENU.pollEvent(event)) {
                                                 if (event.type == sf::Event::Closed) {
-                                                    window.close();
+                                                    samotnik = false;
                                                 }
 
                                                 // Obsługa kliknięcia myszą
                                                 if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
-                                                    sf::Vector2i mousePosition = sf::Mouse::getPosition(window);
-                                                    handleMouseClick(window, mousePosition, board);
+                                                    sf::Vector2i mousePosition = sf::Mouse::getPosition(MENU);
+                                                    handleMouseClick(MENU, mousePosition, board);
                                                 }
                                             }
 
-                                            window.clear(sf::Color(255, 255, 255)); // Kolor tła
+                                            MENU.clear(sf::Color(255, 255, 255)); // Kolor tła
 
                                             // Rysuj kółka na podstawie tablicy
-                                            drawCircles(window, board);
+                                            drawCircles(MENU, board);
 
-                                            window.display();
+                                            MENU.display();
                                         }
                                         
                                         
@@ -599,37 +614,39 @@ void main() {
 
                             }
 
-                            OPTIONS.close();
-                            ABOUT.close();
-                            GAME_MENU.clear();
-                            gameMenu.draw(GAME_MENU);
-                            GAME_MENU.display();
+                            
+                            MENU.clear();
+                            gameMenu.draw(MENU);
+                            MENU.display();
                         }
 
                     }
                     if (x == 1)
                     {
-                        while (ABOUT.isOpen())
-                        {
+                        bool about = true;
+                       // while (about)
+                        //{
+                            while (MENU.isOpen()) {
+
 
                             Event aevent;
-                            while (ABOUT.pollEvent(aevent)) {
+                            while (MENU.pollEvent(aevent)) {
                                 if (aevent.type == Event::Closed) {
-                                    ABOUT.close();
+                                    MENU.close();
                                 }
                                 if (aevent.type == Event::KeyPressed)
                                 {
                                     if (aevent.key.code == Keyboard::Escape)
                                     {
-                                        ABOUT.close();
+                                        MENU.close();
                                     }
                                 }
                             }
-                            GAME_MENU.close();
-                            ABOUT.clear();
-                            ABOUT.display();
+                            MENU.close();
+        
                         }
 
+                     //   }
                     }
                     
                     if (x == 2)
